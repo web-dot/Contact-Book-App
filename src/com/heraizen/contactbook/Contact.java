@@ -1,11 +1,14 @@
 package com.heraizen.contactbook;
 
+import java.util.regex.Pattern;
+
 public class Contact {
     
     String id;
     String firstName;
     String lastName;
     String mobile;
+    String email;
     
 //    public Contact(String firstName, String lastName) {
 //        FirstName = firstName;
@@ -27,7 +30,7 @@ public class Contact {
         
         // Validation
         if(firstName.length() < 3 || firstName.length() > 15) {
-            System.out.println("First name should be between 3 to 15 characters in length.");
+            System.err.println("First name should be between 3 to 15 characters in length.");
             UserAdder.getFName();;
         }
         else {
@@ -52,13 +55,23 @@ public class Contact {
         
         // Validation
         if(mobile.length() != 10) {
-            System.out.println("Mobile number must have 10 digits with no special characters.");
+            System.err.println("Mobile number must have 10 digits with no special characters.");
             UserAdder.getMobile();
         }
         else {
             this.mobile=mobile;
         }
     }
+    
+    //email
+    public String getEmail() {
+        return email;
+    }
+    
+    public void setEmail(String mail) {
+        email=mail;
+    }
+    
     @Override
     public String toString() {
         return "Contact [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", mobile=" + mobile + "]";

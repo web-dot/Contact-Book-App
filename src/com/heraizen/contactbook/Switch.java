@@ -26,7 +26,9 @@ public class Switch {
                 UserAdder.getContactMap(contactMap);
                 UserAdder.getMobile();
                 
-                contactList.add(c);
+                UserAdder.getEmail();
+                
+                //contactList.add(c);
                 contactMap.put(c.getMobile(), c);
                 
                 System.out.println(contactMap);

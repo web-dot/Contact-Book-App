@@ -7,7 +7,7 @@ public class DisplayMenu {
     public static void display() {
         System.out.println("************Contact Book************");
         for(String option : menu) {
-            System.out.println(option);
+            System.err.println(option);
         }
     } 
 }

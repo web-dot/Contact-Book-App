@@ -9,6 +9,7 @@ public class Contact {
     String lastName;
     String mobile;
     String email;
+    String workplace;
     
 //    public Contact(String firstName, String lastName) {
 //        FirstName = firstName;
@@ -16,10 +17,12 @@ public class Contact {
 //    }
     
     public String getId() {
-        return id;
+        return this.id;
     }
-    public void setId(String id) {
-        this.id = id;
+    public void setId() {
+        String mobStr = this.mobile.substring(6);
+        String nameStr = this.firstName.substring(0,1).toUpperCase();
+        this.id = nameStr+mobStr;
     }
     
     //first-name
@@ -70,6 +73,15 @@ public class Contact {
     
     public void setEmail(String mail) {
         email=mail;
+    }
+    
+    //workplace
+    public String getWorkplace() {
+        return workplace;
+    }
+    
+    public void setWorkplace(String workplace) {
+        this.workplace=workplace;
     }
     
     @Override

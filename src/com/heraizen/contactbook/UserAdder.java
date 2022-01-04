@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 public class UserAdder {
 
-    private static String[] addMenu = {"1. First Name* ", "2. Last Name ", "3. Mobile* ", " Email* "};
+    private static String[] addMenu = {"1. First Name* ", "2. Last Name ", "3. Mobile* ", "4. Email* ", "5. workplace"};
     
     static Contact contact;
     static String firstName;
@@ -46,6 +46,7 @@ public class UserAdder {
         addMobile();
     }
     
+    // get email
     public static void getEmail() {
         System.err.println("Enter email");
         String mail = sc.nextLine();
@@ -55,11 +56,15 @@ public class UserAdder {
     
     //----------------ADD--------------------
     
-    // add first name based on input criteria
+    // set first name based on input criteria
     public static void addFName() {
         
         if(firstName.isEmpty()) {
             System.err.println("This field cannot be blank");
+            getFName();
+        }
+        if(!ifLetter(firstName)) {
+            System.err.println("Please enter only alphabets.");
             getFName();
         }
         else {
@@ -67,14 +72,19 @@ public class UserAdder {
         }
     }
     
-    // add last name
+    // set last name
     public static void addLName() {
         System.err.println("Enter Last Name");
         String LName = sc.nextLine();
+        lastName=LName;
+        if(!ifLetter(lastName)) {
+            System.err.println("Please enter only alphabets.");
+            addLName();
+        }
         contact.setLastName(LName);
     }
     
-    // add mobile based on input criteria
+    // set mobile based on input criteria
     public static void addMobile() {
         
         if(mobile.isEmpty()) {
@@ -85,12 +95,16 @@ public class UserAdder {
             System.err.println("A contact already exists with the entered mobile number.");
             getMobile();
         }
+        if(!ifNumber(mobile)) {
+            System.err.println("Please enter only numbers.");
+            getMobile();
+        }
         else {
             contact.setMobile(mobile); //passing to accessor
         }
     }
     
-    //check mobile
+    // check if mobile exist
     public static boolean checkMobile() {
         
         Set<String> set = contactMap.keySet();
@@ -104,20 +118,20 @@ public class UserAdder {
         return mobExists;
     }
     
-    //  add mobile based on input criteria
+    //  set email based on input criteria
     public static void addEmail() {
         
         String regex = "^(.+)@(.+)$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
-        boolean match = matcher.matches();
-        System.out.println(match);
+        //boolean match = matcher.matches();
+        //System.out.println(match);
         
         if(email.isEmpty()) {
             System.err.println("This field cannot be blank");
             getEmail();
         }
-        if(match) {
+        if(matcher.matches()) {
             contact.setEmail(email); //passing to accessor
         }
         else {
@@ -126,7 +140,52 @@ public class UserAdder {
         }
     }
 
+    // set workplace
+    public static void addWorkplace() {
+        System.err.println("Enter workplace");
+        String work = sc.nextLine();
+        workplace = work;
+        if(!ifLetter(workplace)) {
+            System.err.println("Please enter only alphabets.");
+            addWorkplace();
+        }
+        contact.setWorkplace(workplace);;
+    }
     
+    //check if not letter
+    public static boolean ifLetter(String str) {
+        boolean isLetter = true;
+        for(int i=0; i<str.length(); i++) {
+            if(!Character.isLetter(str.charAt(i))) {
+                isLetter=false;
+                break;
+            }
+        }
+        return isLetter;
+    }
+    
+    //check if not number
+    public static boolean ifNumber(String str) {
+        boolean isDigit = true;
+        for(int i=0; i<str.length(); i++) {
+            if(!Character.isDigit(str.charAt(i))) {
+                isDigit = false;
+                break;
+            }
+        }
+        return isDigit;
+    }
+    
+    // set id
+    public static void setId() {
+        contact.setId();
+    }
+    
+    // confirmation
+    public static void confirm() {
+        System.out.println("Contact has been successfully added with unique id: " +  contact.getId());
+        System.out.println();
+    }
     
 }
 

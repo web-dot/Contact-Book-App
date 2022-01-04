@@ -27,13 +27,20 @@ public class Switch {
                 UserAdder.getMobile();
                 
                 UserAdder.getEmail();
+                UserAdder.addWorkplace();
+                UserAdder.setId();
+                UserAdder.confirm();
+                
                 
                 //contactList.add(c);
-                contactMap.put(c.getMobile(), c);
+                //contactMap.put(c.getMobile(), c);
                 
-                System.out.println(contactMap);
+                //System.out.println(contactMap);
                 //System.out.println(contactList);
+
                 break;
+            case 2:
+                
             default :
                 System.out.println("Invalid choice. Please enter 1 through 6 only.");
                 System.out.println();

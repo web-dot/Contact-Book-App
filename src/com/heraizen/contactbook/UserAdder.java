@@ -36,7 +36,7 @@ public class UserAdder {
     // get first name
     public static void getFName() {
         System.out.println("Enter First Name[Mandatory]");
-        String FName = sc.nextLine();
+        String FName = sc.nextLine().toLowerCase();
         firstName=FName;
         addFName();
     }
@@ -60,7 +60,7 @@ public class UserAdder {
     // get email
     public static void getEmail() {
         System.out.println("Enter email[Mandatory]");
-        String mail = sc.nextLine();
+        String mail = sc.nextLine().toLowerCase();
         email=mail;
         addEmail();
     }
@@ -86,7 +86,7 @@ public class UserAdder {
     // set last name
     public static void addLName() {
         System.out.println("Enter Last Name");
-        String LName = sc1.nextLine();
+        String LName = sc1.nextLine().toLowerCase();
         lastName=LName;
         if(!ifLetter(lastName)) {
             System.out.println("Please enter only alphabets.");
@@ -188,7 +188,7 @@ public class UserAdder {
     // set workplace
     public static void addWorkplace() {
         System.out.println("Enter workplace");
-        String work = sc.nextLine();
+        String work = sc.nextLine().toLowerCase();
         workplace = work;
         if(!ifLetter(workplace)) {
             System.out.println("Please enter only alphabets.");

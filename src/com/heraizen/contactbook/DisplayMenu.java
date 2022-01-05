@@ -19,7 +19,7 @@ public class DisplayMenu {
                 System.out.println("Press 3 to Search Contact");
                 System.out.println("Press 4 to Update Contact");
                 System.out.println("Press 5 to Delete Contact");
-                System.out.println("Press 6 to 1Exit");
+                System.out.println("Press 6 to Exit");
                 System.out.println("*************************************");
                 
                 System.out.println("Enter your choice");

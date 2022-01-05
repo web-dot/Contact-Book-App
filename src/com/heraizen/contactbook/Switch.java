@@ -49,7 +49,7 @@ public class Switch {
                     break;
                 }
                 System.out.println("Enter text to search");
-                String srchStr = sc.nextLine();
+                String srchStr = sc.nextLine().toLowerCase();
                 Contact con;
                 boolean doesExist = false;
                

@@ -33,7 +33,7 @@ public class Contact {
         
         // Validation
         if(firstName.length() < 3 || firstName.length() > 15) {
-            System.err.println("First name should be between 3 to 15 characters in length.");
+            System.out.println("First name should be between 3 to 15 characters in length.");
             UserAdder.getFName();;
         }
         else {
@@ -58,7 +58,7 @@ public class Contact {
         
         // Validation
         if(mobile.length() != 10) {
-            System.err.println("Mobile number must have 10 digits with no special characters.");
+            System.out.println("Mobile number must have 10 digits with no special characters.");
             UserAdder.getMobile();
         }
         else {

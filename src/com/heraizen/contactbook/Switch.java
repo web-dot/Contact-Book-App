@@ -93,37 +93,35 @@ public class Switch {
                     }
                 
                 break;
-            case 4:
-                System.out.println(contactMap);
-                System.out.println(idMap);
-                
+            case 4:                
                 DisplayContacts.display(contactMap);
                 
                 System.out.println("Enter the unique id to be updated");
                 String uniqueId = sc.nextLine();
-                Contact forAbort;
-                
+
                 Set<String> conKey = idMap.keySet();
+                
                 for(String key : conKey) {
                     if(key.equals(uniqueId)) {
-                        forAbort = idMap.get(uniqueId);
-                        
                         Contact forUp = idMap.get(uniqueId);
+                        String oldMobile = idMap.get(forUp.getId()).getMobile();
+                        
                         UserAdder.getContact(forUp);
                         UserAdder.getFName();
                         UserAdder.getContactMap(contactMap);
-                        boolean isUnique = UserAdder.getMobileNew(forAbort);
+                        boolean isUnique = UserAdder.getMobileNew(forUp);
                         if(isUnique) {
                             UserAdder.getEmail();
                             UserAdder.addWorkplace();
                             UserAdder.confirm();
-                            //System.out.println(contactMap);
+                            contactMap.remove(oldMobile);
                             contactMap.put(forUp.getMobile(), forUp);
-                            idMap.put(conUp.getId(), forUp);
-                        }
-                        else {
-                            break;
+                            idMap.put(forUp.getId(), forUp);
                         }   
+                    }
+                    else {
+                        System.out.println("input error");
+                        
                     }
                 }
                 break;

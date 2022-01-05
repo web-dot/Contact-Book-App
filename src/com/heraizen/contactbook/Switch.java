@@ -35,15 +35,9 @@ public class Switch {
                 UserAdder.setId();
                 UserAdder.confirm();
                 
-   
-                //contactList.add(c);
                 contactMap.put(c.getMobile(), c);
                 idMap.put(c.getId(), c);
                 
-                
-                System.out.println(contactMap);
-                //System.out.println(contactList);
-
                 break;
             case 2:
                 DisplayContacts.display(contactMap);

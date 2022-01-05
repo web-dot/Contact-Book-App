@@ -152,6 +152,19 @@ public class UserAdder {
     
     //  set email based on input criteria
     public static void addEmail() {
+        if(email.isEmpty()) {
+            System.out.println("This field cannot be blank");
+            getEmail();
+        }
+        Set<String> set = contactMap.keySet();
+        for(String mob : set) {
+            String usersMail = contactMap.get(mob).getEmail();
+            System.out.println(usersMail);
+            if(usersMail.equals(email)) {
+                System.out.println("This email is already taken");
+                break;
+            }
+        }
         
         String regex = "^(.+)@(.+)$";
         Pattern pattern = Pattern.compile(regex);
@@ -159,10 +172,7 @@ public class UserAdder {
         //boolean match = matcher.matches();
         //System.out.println(match);
         
-        if(email.isEmpty()) {
-            System.out.println("This field cannot be blank");
-            getEmail();
-        }
+        
         if(matcher.matches()) {
             contact.setEmail(email); //passing to accessor
         }
@@ -187,11 +197,14 @@ public class UserAdder {
     //check if not letter
     public static boolean ifLetter(String str) {
         boolean isLetter = true;
-        for(int i=0; i<str.length(); i++) {
-            if(!Character.isLetter(str.charAt(i))) {
-                isLetter=false;
-                break;
+        for(int i=0; i<str.trim().length(); i++) {
+            if(!Character.isSpaceChar(str.charAt(i))) {
+                if(!Character.isLetter(str.charAt(i))) {
+                    isLetter=false;
+                    break;
+                }
             }
+            
         }
         return isLetter;
     }

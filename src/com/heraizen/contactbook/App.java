@@ -16,12 +16,12 @@ public class App {
         while(choice!=6) {
             
             System.out.println("************Contact Book************");
-            System.out.println("1. Add Contact");
-            System.out.println("2. View Contacts");
-            System.out.println("3. Search Contact");
-            System.out.println("4. Update Contact");
-            System.out.println("5. Delete Contact");
-            System.out.println("6. Exit");
+            System.out.println("Press 1 to Add Contact");
+            System.out.println("Press 2 to View Contacts");
+            System.out.println("Press 3 to Search Contact");
+            System.out.println("Press 4 to Update Contact");
+            System.out.println("Press 5 to Delete Contact");
+            System.out.println("Press 6 to 1Exit");
             System.out.println("*************************************");
             
             System.out.println("Enter your choice");

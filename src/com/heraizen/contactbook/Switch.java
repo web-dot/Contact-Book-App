@@ -90,74 +90,85 @@ public class Switch {
                     }
                 
                 break;
-            case 4:                
-                DisplayContacts.display(contactMap);
-                
-                System.out.println("Enter the unique id to be updated");
-                String uniqueId = sc.nextLine();
-                
-                
-                Contact forAbort = new Contact(idMap.get(uniqueId).getId(), idMap.get(uniqueId).getFirstName(), idMap.get(uniqueId).getLastName(), idMap.get(uniqueId).getMobile(), idMap.get(uniqueId).getEmail(), idMap.get(uniqueId).getWorkplace());
-                
-                
-                
-                boolean idExists = false;
-                
-                Set<String> conKey = idMap.keySet();
-                
-                for(String key : conKey) {
-                    
-                    if(key.equals(uniqueId)) {
-                        idExists=true;
-                        
-                        Contact forUp = idMap.get(uniqueId);
-                        String oldMobile = idMap.get(forUp.getId()).getMobile();
-                        
-                        UserAdder.getContact(contactMap.get(oldMobile));
-                        UserAdder.getFName();
-                        UserAdder.getContactMap(contactMap);
-                        boolean isUnique = UserAdder.getMobileNew(forAbort);
-                        if(isUnique) {
-                            UserAdder.getEmail();
-                            UserAdder.addWorkplace();
-                            UserAdder.confirm();
-                            contactMap.remove(oldMobile);
-                            contactMap.put(forUp.getMobile(), forUp);
-                            idMap.put(forUp.getId(), forUp);
-                        }   
-                    }
+            case 4:
+                if(idMap.isEmpty() && contactMap.isEmpty()) {
+                    System.out.println("No Contacts created");
                 }
-                if(!idExists) {
-                    System.out.println("id does not exist");
+                else {
+                    DisplayContacts.display(contactMap);
+                    
+                    System.out.println("Enter the unique id to be updated");
+                    String uniqueId = sc.nextLine();
+                    
+                    
+                    Contact forAbort = new Contact(idMap.get(uniqueId).getId(), idMap.get(uniqueId).getFirstName(), idMap.get(uniqueId).getLastName(), idMap.get(uniqueId).getMobile(), idMap.get(uniqueId).getEmail(), idMap.get(uniqueId).getWorkplace());
+                    
+                    
+                    
+                    boolean idExists = false;
+                    
+                    Set<String> conKey = idMap.keySet();
+                    
+                    for(String key : conKey) {
+                        
+                        if(key.equals(uniqueId)) {
+                            idExists=true;
+                            
+                            Contact forUp = idMap.get(uniqueId);
+                            String oldMobile = idMap.get(forUp.getId()).getMobile();
+                            
+                            UserAdder.getContact(contactMap.get(oldMobile));
+                            UserAdder.getFName();
+                            UserAdder.getContactMap(contactMap);
+                            boolean isUnique = UserAdder.getMobileNew(forAbort);
+                            if(isUnique) {
+                                UserAdder.getEmail();
+                                UserAdder.addWorkplace();
+                                UserAdder.confirm();
+                                contactMap.remove(oldMobile);
+                                contactMap.put(forUp.getMobile(), forUp);
+                                idMap.put(forUp.getId(), forUp);
+                            }   
+                        }
+                    }
+                    if(!idExists) {
+                        System.out.println("id does not exist");
+                    }
                 }
                 break;
             case 5:
-                DisplayContacts.display(contactMap);
-                System.out.println("Enter the unique id to be deleted");
-                String delId = sc.nextLine();
-                boolean doExist = false;
-                Set<String> checkSet = idMap.keySet();
-                for(String id : checkSet) {
-                    if(id.equals(delId)) {
-                        doExist=true;
-                        System.out.println("Selected contact will be deleted. Proceed (Y/N)?");
-                        String input = sc.nextLine();
-                        if(input.equals("n") || input.equals("N")) {
-                            System.out.println("Deletion aborted");
+                if(idMap.isEmpty() && contactMap.isEmpty()) {
+                    System.out.println("No Contacts created");
+                }
+                else {
+                    DisplayContacts.display(contactMap);
+                    System.out.println("Enter the unique id to be deleted");
+                    String delId = sc.nextLine();
+                    boolean doExist = false;
+                    Set<String> checkSet = idMap.keySet();
+                    for(String id : checkSet) {
+                        if(id.equals(delId)) {
+                            doExist=true;
+                            System.out.println("Selected contact will be deleted. Proceed (Y/N)?");
+                            String input = sc.nextLine();
+                            if(input.equals("n") || input.equals("N")) {
+                                System.out.println("Deletion aborted");
+                            }
+                            if(input.equals("y") || input.equals("Y")) {
+                                String mobile = idMap.get(delId).getMobile();
+                                contactMap.remove(mobile);
+                                idMap.remove(delId);
+                                System.out.println("Selected record deleted successfully.");
+                                break;
+                            }
+                            if(!doExist) {
+                                System.out.println("No contact exists with the entered unique id");
+                            }
                         }
-                        if(input.equals("y") || input.equals("Y")) {
-                            String mobile = idMap.get(delId).getMobile();
-                            contactMap.remove(mobile);
-                            idMap.remove(delId);
-                            System.out.println("Selected record deleted successfully.");
-                            break;
-                        }
-
+                
                     }
                 }
-                if(!doExist) {
-                    System.out.println("No contact exists with the entered unique id");
-                }
+                
                 break;
             case 6:
                 System.out.println("Thank you. Please hit enter to exit the system.");

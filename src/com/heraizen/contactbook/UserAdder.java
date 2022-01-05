@@ -32,7 +32,7 @@ public class UserAdder {
     
     // get first name
     public static void getFName() {
-        System.err.println("Enter First Name");
+        System.out.println("Enter First Name");
         String FName = sc.nextLine();
         firstName=FName;
         addFName();
@@ -40,15 +40,23 @@ public class UserAdder {
     
     // get mobile
     public static void getMobile() {
-        System.err.println("Enter Mobile number");
+        System.out.println("Enter Mobile number");
         String mob = sc.nextLine();
         mobile=mob;
         addMobile();
     }
     
+    public static boolean getMobileNew(Contact c) {
+        System.out.println("Enter new Mobile number");
+        String mob = sc.nextLine();
+        mobile=mob;
+        boolean isUnique = addMobileNew(c);
+        return isUnique;
+    }
+    
     // get email
     public static void getEmail() {
-        System.err.println("Enter email");
+        System.out.println("Enter email");
         String mail = sc.nextLine();
         email=mail;
         addEmail();
@@ -60,11 +68,11 @@ public class UserAdder {
     public static void addFName() {
         
         if(firstName.isEmpty()) {
-            System.err.println("This field cannot be blank");
+            System.out.println("This field cannot be blank");
             getFName();
         }
         if(!ifLetter(firstName)) {
-            System.err.println("Please enter only alphabets.");
+            System.out.println("Please enter only alphabets.");
             getFName();
         }
         else {
@@ -74,11 +82,11 @@ public class UserAdder {
     
     // set last name
     public static void addLName() {
-        System.err.println("Enter Last Name");
+        System.out.println("Enter Last Name");
         String LName = sc.nextLine();
         lastName=LName;
         if(!ifLetter(lastName)) {
-            System.err.println("Please enter only alphabets.");
+            System.out.println("Please enter only alphabets.");
             addLName();
         }
         contact.setLastName(LName);
@@ -88,20 +96,44 @@ public class UserAdder {
     public static void addMobile() {
         
         if(mobile.isEmpty()) {
-            System.err.println("This field cannot be blank");
+            System.out.println("This field cannot be blank");
             getMobile();
         }
         if(checkMobile()) {
-            System.err.println("A contact already exists with the entered mobile number.");
+            System.out.println("A contact already exists with the entered mobile number.");
             getMobile();
         }
         if(!ifNumber(mobile)) {
-            System.err.println("Please enter only numbers.");
+            System.out.println("Please enter only numbers.");
             getMobile();
         }
         else {
             contact.setMobile(mobile); //passing to accessor
         }
+    }
+    
+    public static boolean addMobileNew(Contact c) {
+        boolean mobIsUnique = true;
+        if(mobile.isEmpty()) {
+            System.out.println("This field cannot be blank");
+            getMobileNew(c);
+        }
+        else{
+            Set<String> set = contactMap.keySet();
+            String checkId = contact.getId();
+            for(String mob : set) {
+                String inIds = contactMap.get(mob).getId(); 
+                if(!inIds.equals(checkId) && mob.equals(mobile)) {
+                    System.out.println("Updated mobile number belongs to a different contact. Update cancelled");
+                    mobIsUnique=false;
+                    contactMap.put(mobile, c);
+                }
+            }
+        }
+        if(mobIsUnique) {
+            contact.setMobile(mobile);
+        }        
+        return mobIsUnique;
     }
     
     // check if mobile exist
@@ -128,25 +160,25 @@ public class UserAdder {
         //System.out.println(match);
         
         if(email.isEmpty()) {
-            System.err.println("This field cannot be blank");
+            System.out.println("This field cannot be blank");
             getEmail();
         }
         if(matcher.matches()) {
             contact.setEmail(email); //passing to accessor
         }
         else {
-            System.err.println("Enter valid email. Example: abc123@xyz.com");
+            System.out.println("Enter valid email. Example: abc123@xyz.com");
             getEmail();
         }
     }
 
     // set workplace
     public static void addWorkplace() {
-        System.err.println("Enter workplace");
+        System.out.println("Enter workplace");
         String work = sc.nextLine();
         workplace = work;
         if(!ifLetter(workplace)) {
-            System.err.println("Please enter only alphabets.");
+            System.out.println("Please enter only alphabets.");
             addWorkplace();
         }
         contact.setWorkplace(workplace);;

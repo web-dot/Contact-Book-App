@@ -20,6 +20,7 @@ public class UserAdder {
     static String oldMobile;
     
     static Scanner sc = new Scanner(System.in);
+    static Scanner sc1 = new Scanner(System.in);
     
     static Map<String, Contact> contactMap;
        
@@ -85,7 +86,7 @@ public class UserAdder {
     // set last name
     public static void addLName() {
         System.out.println("Enter Last Name");
-        String LName = sc.nextLine();
+        String LName = sc1.nextLine();
         lastName=LName;
         if(!ifLetter(lastName)) {
             System.out.println("Please enter only alphabets.");

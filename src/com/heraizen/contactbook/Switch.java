@@ -100,18 +100,14 @@ public class Switch {
                     System.out.println("Enter the unique id to be updated");
                     String uniqueId = sc.nextLine();
                     
-                    
-                    Contact forAbort = new Contact(idMap.get(uniqueId).getId(), idMap.get(uniqueId).getFirstName(), idMap.get(uniqueId).getLastName(), idMap.get(uniqueId).getMobile(), idMap.get(uniqueId).getEmail(), idMap.get(uniqueId).getWorkplace());
-                    
-                    
-                    
                     boolean idExists = false;
                     
                     Set<String> conKey = idMap.keySet();
                     
                     for(String key : conKey) {
-                        
                         if(key.equals(uniqueId)) {
+                            
+                            Contact forAbort = new Contact(idMap.get(uniqueId).getId(), idMap.get(uniqueId).getFirstName(), idMap.get(uniqueId).getLastName(), idMap.get(uniqueId).getMobile(), idMap.get(uniqueId).getEmail(), idMap.get(uniqueId).getWorkplace());
                             idExists=true;
                             
                             Contact forUp = idMap.get(uniqueId);
@@ -132,7 +128,7 @@ public class Switch {
                         }
                     }
                     if(!idExists) {
-                        System.out.println("id does not exist");
+                        System.out.println("No contact exists with the entered unique id");
                     }
                 }
                 break;
@@ -161,11 +157,12 @@ public class Switch {
                                 System.out.println("Selected record deleted successfully.");
                                 break;
                             }
-                            if(!doExist) {
-                                System.out.println("No contact exists with the entered unique id");
-                            }
+                            
                         }
                 
+                    }
+                    if(!doExist) {
+                        System.out.println("No contact exists with the entered unique id");
                     }
                 }
                 

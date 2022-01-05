@@ -17,6 +17,8 @@ public class UserAdder {
     static String email;
     static String workplace;
     
+    static String oldMobile;
+    
     static Scanner sc = new Scanner(System.in);
     
     static Map<String, Contact> contactMap;
@@ -32,7 +34,7 @@ public class UserAdder {
     
     // get first name
     public static void getFName() {
-        System.out.println("Enter First Name");
+        System.out.println("Enter First Name[Mandatory]");
         String FName = sc.nextLine();
         firstName=FName;
         addFName();
@@ -40,7 +42,7 @@ public class UserAdder {
     
     // get mobile
     public static void getMobile() {
-        System.out.println("Enter Mobile number");
+        System.out.println("Enter Mobile number[Mandatory]");
         String mob = sc.nextLine();
         mobile=mob;
         addMobile();
@@ -56,7 +58,7 @@ public class UserAdder {
     
     // get email
     public static void getEmail() {
-        System.out.println("Enter email");
+        System.out.println("Enter email[Mandatory]");
         String mail = sc.nextLine();
         email=mail;
         addEmail();
@@ -126,7 +128,7 @@ public class UserAdder {
                 if(!inIds.equals(checkId) && mob.equals(mobile)) {
                     System.out.println("Updated mobile number belongs to a different contact. Update cancelled");
                     mobIsUnique=false;
-                    contactMap.put(mobile, c);
+                    contactMap.put(c.getMobile(), c);
                 }
             }
         }
@@ -159,10 +161,10 @@ public class UserAdder {
         Set<String> set = contactMap.keySet();
         for(String mob : set) {
             String usersMail = contactMap.get(mob).getEmail();
-            System.out.println(usersMail);
+            //System.out.println(usersMail);
             if(usersMail.equals(email)) {
                 System.out.println("This email is already taken");
-                break;
+                getEmail();
             }
         }
         

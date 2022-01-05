@@ -27,7 +27,7 @@ public class DisplayContacts {
                    System.out.println();
                } 
            }
-              
+           System.out.println();   
              
        }
 }

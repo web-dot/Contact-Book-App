@@ -11,10 +11,20 @@ public class Contact {
     String email;
     String workplace;
     
-//    public Contact(String firstName, String lastName) {
-//        FirstName = firstName;
-//        LastName = lastName;
-//    }
+    
+    public Contact() {
+        
+    }
+    
+    
+    public Contact(String id, String firstName, String lastName, String mobile, String email, String workplace) {
+        this.id=id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.mobile=mobile;
+        this.email=email;
+        this.workplace=workplace;
+    }
     
     public String getId() {
         return this.id;

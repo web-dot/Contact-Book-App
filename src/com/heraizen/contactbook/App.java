@@ -13,7 +13,7 @@ public class App {
         int choice = 0;
        
         // call switch
-        while(choice!=5) {
+        while(choice!=6) {
             
             System.out.println("************Contact Book************");
             System.out.println("1. Add Contact");

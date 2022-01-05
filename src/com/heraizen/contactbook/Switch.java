@@ -126,9 +126,39 @@ public class Switch {
                 }
                 break;
             case 5:
-                
-                
-                
+                DisplayContacts.display(contactMap);
+                System.out.println("Enter the unique id to be deleted");
+                String delId = sc.nextLine();
+                boolean doExist = false;
+                Set<String> checkSet = idMap.keySet();
+                for(String id : checkSet) {
+                    if(id.equals(delId)) {
+                        doExist=true;
+                        System.out.println("Selected contact will be deleted. Proceed (Y/N)?");
+                        String input = sc.nextLine();
+                        if(input.equals("n") || input.equals("N")) {
+                            System.out.println("Deletion aborted");
+                        }
+                        if(input.equals("y") || input.equals("Y")) {
+                            idMap.remove(delId);
+                            contactMap.remove(idMap.get(delId).getMobile());
+                            System.out.println("Selected record deleted successfully.");
+                            break;
+                        }
+
+                    }
+                }
+                if(!doExist) {
+                    System.out.println("No contact exists with the entered unique id");
+                }
+                break;
+            case 6:
+                System.out.println("Thank you. Please hit enter to exit the system.");
+                String s = sc.nextLine();
+                break;
+            default:
+                System.out.println("Invalid input");
+                break;
             }
         }
     }

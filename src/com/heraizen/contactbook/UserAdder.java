@@ -35,7 +35,7 @@ public class UserAdder {
     
     // get first name
     public static void getFName() {
-        System.out.println("Enter First Name[Mandatory]");
+        System.out.println("Enter First Name[min-length-3:Mandatory]");
         String FName = sc.nextLine().toLowerCase();
         firstName=FName;
         addFName();
@@ -43,7 +43,7 @@ public class UserAdder {
     
     // get mobile
     public static void getMobile() {
-        System.out.println("Enter Mobile number[Mandatory]");
+        System.out.println("Enter Mobile number[10 digits:Mandatory]");
         String mob = sc.nextLine();
         mobile=mob;
         addMobile();
@@ -59,7 +59,7 @@ public class UserAdder {
     
     // get email
     public static void getEmail() {
-        System.out.println("Enter email[Mandatory]");
+        System.out.println("Enter email[format-abc@gmail.com:Mandatory]");
         String mail = sc.nextLine().toLowerCase();
         email=mail;
         addEmail();
@@ -85,14 +85,15 @@ public class UserAdder {
     
     // set last name
     public static void addLName() {
-        System.out.println("Enter Last Name");
+        System.out.println("Enter Last Name[Optional]");
+        sc1.reset();
         String LName = sc1.nextLine().toLowerCase();
         lastName=LName;
         if(!ifLetter(lastName)) {
             System.out.println("Please enter only alphabets.");
             addLName();
         }
-        contact.setLastName(LName);
+        contact.setLastName(lastName);
     }
     
     // set mobile based on input criteria
@@ -187,7 +188,7 @@ public class UserAdder {
 
     // set workplace
     public static void addWorkplace() {
-        System.out.println("Enter workplace");
+        System.out.println("Enter workplace[Optional]");
         String work = sc.nextLine().toLowerCase();
         workplace = work;
         if(!ifLetter(workplace)) {

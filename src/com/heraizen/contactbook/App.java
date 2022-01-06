@@ -9,8 +9,8 @@ public class App {
             
             int choice = 0;
             while(choice != 6) {
-                choice = DisplayMenu.getChoice();//api param
-                Switch.switchIn(choice);
+                int option = DisplayMenu.getChoice();//api param
+                Switch.switchIn(option);
                 }
             }
         
